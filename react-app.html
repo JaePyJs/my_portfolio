@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <link rel="icon" href="./favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#22223b" />
     <meta name="description" content="JaePyJs Retro Arcade Portfolio" />
     <link rel="apple-touch-icon" href="./logo192.png" />
     <link rel="manifest" href="./manifest.json" />
@@ -13,8 +13,78 @@
       rel="stylesheet"
     />
     <title>JaePyJs Arcade Portfolio - Interactive Version</title>
+    <style>
+      @keyframes loadingBar {
+        0% { width: 0%; }
+        100% { width: 100%; }
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #22223b;
+      }
+      .loading-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: #22223b;
+        color: #ffffff;
+        font-family: 'Press Start 2P', cursive;
+      }
+      .loading-title {
+        color: #f67280;
+        text-shadow: 0 0 10px #f67280;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+      .loading-bar-container {
+        width: 200px;
+        height: 20px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 2px solid #ffffff;
+        position: relative;
+        margin-bottom: 2rem;
+      }
+      .loading-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(90deg, #f67280, #c06c84);
+        animation: loadingBar 3s infinite linear;
+      }
+      .loading-text {
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="loading-container">
+        <h1 class="loading-title">LOADING ARCADE...</h1>
+        <div class="loading-bar-container">
+          <div class="loading-bar"></div>
+        </div>
+        <p class="loading-text">Please wait while the arcade boots up...</p>
+      </div>
+    </div>
+    <script src="./static/js/main.0fc48c6f.js"></script>
+    <script>
+      // Add event listener to ensure scripts are loaded
+      window.addEventListener('load', function() {
+        console.log('All resources loaded!');
+        // Hide loading screen after a short delay to ensure React has initialized
+        setTimeout(function() {
+          const loadingScreen = document.querySelector('.loading-container');
+          if (loadingScreen && loadingScreen.parentNode === document.getElementById('root')) {
+            loadingScreen.style.display = 'none';
+          }
+        }, 2000);
+      });
+    </script>
   </body>
 </html>
